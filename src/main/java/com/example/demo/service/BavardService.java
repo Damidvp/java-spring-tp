@@ -17,8 +17,8 @@ public class BavardService {
 		this.nom = nom;
 	}
 	
-	public void parler() {
-		System.out.println(this.nom + " [" + this.getClass().getSimpleName() + "]");
+	public String parler() {
+		return this.nom + " [" + this.getClass().getSimpleName() + "]";
 	}
 	
 	@PostConstruct

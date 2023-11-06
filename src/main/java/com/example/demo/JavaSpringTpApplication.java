@@ -21,8 +21,13 @@ public class JavaSpringTpApplication {
 	
 	@GetMapping("hello")
 	public String hello() {
-		bavardService.parler();
+		//bavardService.parler();
 		return "Hello World!";
+	}
+	
+	@GetMapping("blabla")
+	public String blabla() {
+		return bavardService.parler();
 	}
 
 }
