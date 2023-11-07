@@ -62,6 +62,7 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		testerTP3();
 		testerTP4();
+		testerTP5();
 	}
 	
 	private void testerTP3() {
@@ -125,6 +126,28 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 		for(Animal animal : animalRepo.findAllByColorIn(colors)) {
 			System.out.println(animal.toString());
 		}
+	}
+	
+	private void testerTP5() {
+		//SpeciesRepository
+		for(Species species : speciesRepo.findAllByNameAsc()) {
+			System.out.println(species.toString());
+		}
+		for(Species species : speciesRepo.findAllByCommonName("Ch")) {
+			System.out.println(species.toString());
+		}
+		
+		//PersonRepository
+		for(Person person : personRepo.findAllBetweenAges(20, 30)) {
+			System.out.println(person.toString());
+		}
+		for(Person person : personRepo.findAllHavingThisAnimal(animalRepo.findById(1).orElseThrow())) {
+			System.out.println(person.toString());
+		}
+		
+		//AnimalRepository
+		System.out.println("Animaux de sexe 'M' : " + animalRepo.countAllBySex(Sex.M));
+		System.out.println("Animal possédé : " + animalRepo.checkIfAnimalIsAdopted(animalRepo.findById(8).orElseThrow()));
 	}
 
 }

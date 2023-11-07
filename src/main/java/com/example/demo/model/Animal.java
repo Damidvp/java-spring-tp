@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.util.List;
+
 import com.example.demo.enums.Sex;
 
 import jakarta.persistence.Entity;
@@ -8,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
@@ -25,6 +28,9 @@ public class Animal {
 	
 	@ManyToOne
 	private Species species;
+	
+	@ManyToMany(mappedBy = "animals")
+	private List<Person> person;
 	
 	public Animal() {}
 
