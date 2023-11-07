@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.example.demo.model.Animal;
 import com.example.demo.model.Person;
 
-public interface PersonRepository extends JpaRepository<Person, Integer>{
+public interface PersonRepository extends PersonRepositoryCustom, JpaRepository<Person, Integer>{
 	
 	List<Person> findByFirstnameOrLastname(String firstname, String lastname);
 	List<Person> findByAgeGreaterThanEqual(Integer age);

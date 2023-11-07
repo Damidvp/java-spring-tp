@@ -63,6 +63,7 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 		testerTP3();
 		testerTP4();
 		testerTP5();
+		testerTP6();
 	}
 	
 	private void testerTP3() {
@@ -133,7 +134,7 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 		for(Species species : speciesRepo.findAllByNameAsc()) {
 			System.out.println(species.toString());
 		}
-		for(Species species : speciesRepo.findAllByCommonName("Ch")) {
+		for(Species species : speciesRepo.findAllByCommonName("ch")) {
 			System.out.println(species.toString());
 		}
 		
@@ -148,6 +149,11 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 		//AnimalRepository
 		System.out.println("Animaux de sexe 'M' : " + animalRepo.countAllBySex(Sex.M));
 		System.out.println("Animal possédé : " + animalRepo.checkIfAnimalIsAdopted(animalRepo.findById(8).orElseThrow()));
+	}
+	
+	private void testerTP6() {
+		personRepo.deletePersonsWithoutAnimal();
+		personRepo.createPersonEntities(10);
 	}
 
 }
