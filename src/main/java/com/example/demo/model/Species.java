@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,20 +12,22 @@ public class Species {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private String common_name;
-	private String latin_name;
+	@Column(name = "common_name")
+	private String commonName;
+	@Column(name = "latin_name")
+	private String latinName;
 	
 	public Species() {}
 	
 	public Species(String common_name, String latin_name) {
 		super();
-		this.common_name = common_name;
-		this.latin_name = latin_name;
+		this.commonName = common_name;
+		this.latinName = latin_name;
 	}
 
 	@Override
 	public String toString() {
-		return "Species [id=" + id + ", common_name=" + common_name + ", latin_name=" + latin_name + "]";
+		return "Species [id=" + id + ", common_name=" + commonName + ", latin_name=" + latinName + "]";
 	}
 	
 	

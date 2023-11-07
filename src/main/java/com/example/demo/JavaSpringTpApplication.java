@@ -1,6 +1,7 @@
 package com.example.demo;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,16 +19,8 @@ import com.example.demo.repository.PersonRepository;
 import com.example.demo.repository.SpeciesRepository;
 import com.example.demo.service.BavardService;
 
-import jakarta.persistence.Cache;
-import jakarta.persistence.EntityGraph;
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceUnit;
-import jakarta.persistence.PersistenceUnitUtil;
-import jakarta.persistence.Query;
-import jakarta.persistence.SynchronizationType;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.metamodel.Metamodel;
 import jakarta.transaction.Transactional;
 
 @SpringBootApplication
@@ -67,6 +60,11 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 	@Override @Transactional
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
+		testerTP3();
+		testerTP4();
+	}
+	
+	private void testerTP3() {
 		for(Animal animal : animalRepo.findAll()) {
 			System.out.println(animal.toString());
 		}
@@ -98,6 +96,35 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 		
 		System.out.println("NB ELEMENTS LISTES :\n" + "Animal: " + animalRepo.count() + " | Person: " + 
 				personRepo.count() + " | Species: " + speciesRepo.count());
+	}
+
+	private void testerTP4() {
+		//SpeciesRepository
+		System.out.println(speciesRepo.findFirstByCommonName("Chat"));
+		for(Species species : speciesRepo.findByLatinNameContainsIgnoreCase("Is")) {
+			System.out.println(species.toString());
+		}
+		
+		//PersonRepository
+		for(Person person : personRepo.findByFirstnameOrLastname("Arno", "Nero")) {
+			System.out.println(person.toString());
+		}
+		for(Person person : personRepo.findByAgeGreaterThanEqual(30)) {
+			System.out.println(person.toString());
+		}
+		
+		//AnimalRepository
+		Species species1 = speciesRepo.findById(2).orElseThrow();
+		for(Animal animal : animalRepo.findBySpecies(species1)) {
+			System.out.println(animal.toString());
+		}
+		List<String> colors = new ArrayList<>();
+		colors.add("Noir");
+		colors.add("Blanc");
+		colors.add("Roux");
+		for(Animal animal : animalRepo.findAllByColorIn(colors)) {
+			System.out.println(animal.toString());
+		}
 	}
 
 }
