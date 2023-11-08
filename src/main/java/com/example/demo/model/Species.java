@@ -27,8 +27,23 @@ public class Species {
 
 	@Override
 	public String toString() {
-		return "Species [id=" + id + ", common_name=" + commonName + ", latin_name=" + latinName + "]";
+		return "*** SPECIES - " + this.commonName + ", " + this.latinName + " ***";
 	}
-	
-	
+
+	public String getCommonName() {
+		return commonName;
+	}
+
+	public void setCommonName(String commonName) {
+		this.commonName = commonName;
+	}
+
+	public String getLatinName() {
+		return latinName;
+	}
+
+	public void setLatinName(String latinName) {
+		this.latinName = latinName;
+	}
+
 }

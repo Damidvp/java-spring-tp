@@ -64,6 +64,8 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 		testerTP4();
 		testerTP5();
 		testerTP6();
+		
+		testerAutresMethodes();
 	}
 	
 	private void testerTP3() {
@@ -154,8 +156,11 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 	private void testerTP6() {
 		//personRepo.deletePersonsWithoutAnimal();
 		//personRepo.createPersonEntities(10);
+	}
+	
+	private void testerAutresMethodes() {
 		//personRepo.adoptAnimalForPerson(personRepo.findById(15).orElseThrow(), animalRepo.findById(6).orElseThrow());
-		animalRepo.createAnimalEntites(5);
+		//animalRepo.createAnimalEntites(5);
 	}
 
 }

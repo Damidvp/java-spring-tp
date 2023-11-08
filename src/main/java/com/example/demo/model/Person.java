@@ -32,8 +32,8 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", age=" + age + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", animals=" + animals + "]";
+		return "*** PERSON - " + this.firstname + " " + this.lastname.toUpperCase() + ", " + 
+				this.age + " ans, " + this.animals.size() + " animaux ***";
 	}
 	
 	public void addAnimal(Animal animal) {

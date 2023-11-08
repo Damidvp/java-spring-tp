@@ -43,8 +43,8 @@ public class Animal {
 
 	@Override
 	public String toString() {
-		return "Animal [id=" + id + ", color=" + color + ", name=" + name + ", sex=" + sex + ", species=" + species
-				+ "]";
+		return "*** ANIMAL - " + this.name + ", " + this.color + ", " + this.sex + ", " + 
+				this.species.getCommonName() + " ***";
 	}
 
 	public String getColor() {
