@@ -152,8 +152,10 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 	}
 	
 	private void testerTP6() {
-		personRepo.deletePersonsWithoutAnimal();
-		personRepo.createPersonEntities(10);
+		//personRepo.deletePersonsWithoutAnimal();
+		//personRepo.createPersonEntities(10);
+		//personRepo.adoptAnimalForPerson(personRepo.findById(15).orElseThrow(), animalRepo.findById(6).orElseThrow());
+		animalRepo.createAnimalEntites(5);
 	}
 
 }

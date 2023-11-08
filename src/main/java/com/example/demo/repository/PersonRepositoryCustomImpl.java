@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.example.demo.model.Animal;
 import com.example.demo.model.Person;
 
 import jakarta.persistence.EntityManager;
@@ -29,8 +30,8 @@ public class PersonRepositoryCustomImpl implements PersonRepositoryCustom {
 		createLists();
 		for(int i=0; i<numberOfEntities; i++) {
 			Person person = new Person();
-			Integer randomIndexFirstname = new Random().nextInt(5);
-			Integer randomIndexLastname = new Random().nextInt(5);
+			Integer randomIndexFirstname = new Random().nextInt(randomFirstnames.size());
+			Integer randomIndexLastname = new Random().nextInt(randomLastnames.size());
 			Integer randomAge = new Random().nextInt(65) + 15;
 			
 			person.setFirstname(randomFirstnames.get(randomIndexFirstname));
@@ -55,6 +56,13 @@ public class PersonRepositoryCustomImpl implements PersonRepositoryCustom {
 		randomLastnames.add("Stonsen");
 		randomLastnames.add("Ehra");
 		randomLastnames.add("Logia");
+	}
+
+	@Override
+	public void adoptAnimalForPerson(Person person, Animal animal) {
+		// TODO Auto-generated method stub
+		person.addAnimal(animal);
+		em.persist(person);
 	}
 	
 }

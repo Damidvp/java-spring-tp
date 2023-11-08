@@ -9,7 +9,7 @@ import com.example.demo.enums.Sex;
 import com.example.demo.model.Animal;
 import com.example.demo.model.Species;
 
-public interface AnimalRepository extends JpaRepository<Animal, Integer>{
+public interface AnimalRepository extends JpaRepository<Animal, Integer>, AnimalRepositoryCustom{
 	
 	List<Animal> findBySpecies(Species species);
 	List<Animal> findAllByColorIn(List<String> colors);
