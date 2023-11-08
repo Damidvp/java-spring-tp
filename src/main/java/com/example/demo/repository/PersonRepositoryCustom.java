@@ -9,4 +9,5 @@ public interface PersonRepositoryCustom {
 	void createPersonEntities(Integer numberOfEntities);
 	
 	void adoptAnimalForPerson(Person person, Animal animal);
+	void giveAnimalsToRandomPersons(Integer numberOfAdoptions);
 }

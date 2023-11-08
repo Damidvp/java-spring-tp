@@ -17,4 +17,8 @@ public interface PersonRepository extends PersonRepositoryCustom, JpaRepository<
 	List<Person> findAllBetweenAges(Integer ageMin, Integer ageMax);
 	@Query("SELECT p FROM Person p INNER JOIN p.animals a WHERE a = ?1")
 	List<Person> findAllHavingThisAnimal(Animal animal);
+	
+	//Retourne les personnes ayant 2 animaux ou plus
+	@Query("SELECT p FROM Person p WHERE SIZE(p.animals) > 1")
+	List<Person> findNicePersons();
 }

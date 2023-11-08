@@ -161,6 +161,10 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 	private void testerAutresMethodes() {
 		//personRepo.adoptAnimalForPerson(personRepo.findById(15).orElseThrow(), animalRepo.findById(6).orElseThrow());
 		//animalRepo.createAnimalEntites(5);
+		//personRepo.giveAnimalsToRandomPersons(20);
+		for(Person person : personRepo.findNicePersons()){
+			System.out.println(person.toString());
+		}
 	}
 
 }

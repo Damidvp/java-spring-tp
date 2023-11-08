@@ -18,4 +18,5 @@ public interface AnimalRepository extends JpaRepository<Animal, Integer>, Animal
 	Integer countAllBySex(Sex sex);
 	@Query("SELECT CASE WHEN size(a.person) > 0 THEN true ELSE false END FROM Animal a WHERE a = ?1")
 	Boolean checkIfAnimalIsAdopted(Animal animal);
+
 }

@@ -54,10 +54,7 @@ public class AnimalRepositoryCustomImpl implements AnimalRepositoryCustom{
 		randomSexs.add(Sex.M);
 		randomSexs.add(Sex.F);
 		
-		List<Species> allSpecies = em.createQuery("SELECT s FROM Species s").getResultList();
-		for(Species species : allSpecies) {
-			randomSpecies.add(species);
-		}
+		randomSpecies = em.createQuery("SELECT s FROM Species s").getResultList();
 	}
 
 }
