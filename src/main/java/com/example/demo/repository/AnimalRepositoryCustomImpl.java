@@ -2,11 +2,13 @@ package com.example.demo.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import com.example.demo.enums.Sex;
 import com.example.demo.model.Animal;
 import com.example.demo.model.Species;
+import com.github.javafaker.Faker;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -17,7 +19,6 @@ public class AnimalRepositoryCustomImpl implements AnimalRepositoryCustom{
 	private EntityManager em;
 	
 	private List<String> randomColors = new ArrayList<>();
-	private List<String> randomNames = new ArrayList<>();
 	private List<Sex> randomSexs = new ArrayList<>();
 	private List<Species> randomSpecies = new ArrayList<>();
 	
@@ -25,11 +26,12 @@ public class AnimalRepositoryCustomImpl implements AnimalRepositoryCustom{
 	public void createAnimalEntites(Integer numberOfEntities) {
 		// TODO Auto-generated method stub
 		createLists();
+		Faker faker = new Faker(Locale.FRANCE);
 		for(int i=0; i<numberOfEntities; i++) {
 			Animal animal = new Animal();
 			
 			animal.setColor(randomColors.get(new Random().nextInt(randomColors.size())));
-			animal.setName(randomNames.get(new Random().nextInt(randomNames.size())));
+			animal.setName(faker.pokemon().name());
 			animal.setSex(randomSexs.get(new Random().nextInt(randomSexs.size())));
 			animal.setSpecies(randomSpecies.get(new Random().nextInt(randomSpecies.size())));
 			
@@ -43,13 +45,6 @@ public class AnimalRepositoryCustomImpl implements AnimalRepositoryCustom{
 		randomColors.add("Roux");
 		randomColors.add("Gris");
 		randomColors.add("Violet");
-		
-		randomNames.add("Alphinaud");
-		randomNames.add("Alisaie");
-		randomNames.add("Estinien");
-		randomNames.add("G'raha Tia");
-		randomNames.add("Y'shtola");
-		randomNames.add("Thancred");
 		
 		randomSexs.add(Sex.M);
 		randomSexs.add(Sex.F);

@@ -2,10 +2,12 @@ package com.example.demo.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import com.example.demo.model.Animal;
 import com.example.demo.model.Person;
+import com.github.javafaker.Faker;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -14,9 +16,6 @@ public class PersonRepositoryCustomImpl implements PersonRepositoryCustom {
 	
 	@PersistenceContext
 	private EntityManager em;
-	
-	private List<String> randomFirstnames = new ArrayList<>();
-	private List<String> randomLastnames = new ArrayList<>();
 	
 	@Override
 	public void deletePersonsWithoutAnimal() {
@@ -27,16 +26,13 @@ public class PersonRepositoryCustomImpl implements PersonRepositoryCustom {
 	@Override
 	public void createPersonEntities(Integer numberOfEntities) {
 		// TODO Auto-generated method stub
-		createLists();
+		Faker faker = new Faker(Locale.FRANCE);
 		for(int i=0; i<numberOfEntities; i++) {
 			Person person = new Person();
-			Integer randomIndexFirstname = new Random().nextInt(randomFirstnames.size());
-			Integer randomIndexLastname = new Random().nextInt(randomLastnames.size());
-			Integer randomAge = new Random().nextInt(65) + 15;
 			
-			person.setFirstname(randomFirstnames.get(randomIndexFirstname));
-			person.setLastname(randomLastnames.get(randomIndexLastname));
-			person.setAge(randomAge);
+			person.setFirstname(faker.name().firstName());
+			person.setLastname(faker.name().lastName());
+			person.setAge(faker.number().numberBetween(16, 80));
 
 			em.persist(person);
 		}
@@ -60,22 +56,6 @@ public class PersonRepositoryCustomImpl implements PersonRepositoryCustom {
 			randomPerson.addAnimal(randomAnimal);
 			em.persist(randomPerson);
 		}
-	}
-	
-	private void createLists() {
-		randomFirstnames.add("Arno");
-		randomFirstnames.add("Spaghetti");
-		randomFirstnames.add("Sula");
-		randomFirstnames.add("Ava");
-		randomFirstnames.add("Giiu");
-		randomFirstnames.add("Kuro");
-		
-		randomLastnames.add("Camoa");
-		randomLastnames.add("Joe");
-		randomLastnames.add("Cronim");
-		randomLastnames.add("Stonsen");
-		randomLastnames.add("Ehra");
-		randomLastnames.add("Logia");
 	}
 	
 }

@@ -155,12 +155,12 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 	
 	private void testerTP6() {
 		//personRepo.deletePersonsWithoutAnimal();
-		//personRepo.createPersonEntities(10);
+		//personRepo.createPersonEntities(20);
 	}
 	
 	private void testerAutresMethodes() {
 		//personRepo.adoptAnimalForPerson(personRepo.findById(15).orElseThrow(), animalRepo.findById(6).orElseThrow());
-		//animalRepo.createAnimalEntites(5);
+		animalRepo.createAnimalEntites(20);
 		//personRepo.giveAnimalsToRandomPersons(20);
 		for(Person person : personRepo.findNicePersons()){
 			System.out.println(person.toString());
