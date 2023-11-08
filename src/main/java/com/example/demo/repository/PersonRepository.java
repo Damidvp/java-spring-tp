@@ -21,4 +21,5 @@ public interface PersonRepository extends PersonRepositoryCustom, JpaRepository<
 	//Retourne les personnes ayant 2 animaux ou plus
 	@Query("SELECT p FROM Person p WHERE SIZE(p.animals) > 1")
 	List<Person> findNicePersons();
+
 }

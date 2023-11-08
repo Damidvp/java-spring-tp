@@ -25,7 +25,7 @@ import jakarta.transaction.Transactional;
 
 @SpringBootApplication
 @RestController
-public class JavaSpringTpApplication implements CommandLineRunner {
+public class JavaSpringTpApplication /* implements CommandLineRunner */ {
 	
 	@Autowired
 	private BavardService bavardService;
@@ -57,6 +57,7 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 		return bavardService.parler();
 	}
 
+	/*
 	@Override @Transactional
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
@@ -67,6 +68,7 @@ public class JavaSpringTpApplication implements CommandLineRunner {
 		
 		testerAutresMethodes();
 	}
+	*/
 	
 	private void testerTP3() {
 		for(Animal animal : animalRepo.findAll()) {
